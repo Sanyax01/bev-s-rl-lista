@@ -16,9 +16,27 @@ namespace bevásárló_lista
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<string> items = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
+            Blista.ItemsSource = items;
+        }
+
+        private void Ghozzaadas_Click(object sender, RoutedEventArgs e)
+        {
+            if (ItemBox.Text != "")
+            {
+                string item = ItemBox.Text;
+                items.Add(item);
+                ItemBox.Clear();
+                Blista.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("A termék neve nem lehet üres!");
+            }
+
         }
     }
 }
